@@ -1,9 +1,6 @@
 from ultralytics import YOLO
 import cv2
 
-
-
-
 model = YOLO("yolo26m.pt")
 cap = cv2.VideoCapture(0)
 
@@ -11,7 +8,7 @@ selected_id = None
 current_results = None
 tracker = None
 selected_class = None
-def select_object(event, x, y, flags, param):
+def select_object(event, x, y):
     global selected_id, current_results, tracker, frame,selected_class
     if event == cv2.EVENT_LBUTTONDOWN and current_results is not None:
         for box in current_results[0].boxes:
@@ -75,4 +72,5 @@ while True:
         break
 
 cap.release()
+
 cv2.destroyAllWindows()
